@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import { Container, Titulo, AlertSuccess, AlertDanger, ConteudoForm, Form, Label, Input, ButtonSuccess } from './styles';
+import { Link } from 'react-router-dom';
+import { Container, Titulo, AlertSuccess, AlertDanger, ConteudoForm, Form, Label, Input, ButtonSuccess, ConteudoTitulo, BotaoAcao, ButtonInfo } from './styles';
+
 
 export const Cadastrar = () => {
   const [chamado, setChamado] = useState({
@@ -51,32 +53,40 @@ export const Cadastrar = () => {
   }
 
   return (
-    <div>
-      <Titulo>Abrir chamado</Titulo>
-      {status.type === 'erro' ? <AlertDanger>{status.mensagem}</AlertDanger> : ""}
-      {status.type === 'success' ? <AlertSuccess>{status.mensagem}</AlertSuccess> : ""}
-      <Container>
-        <ConteudoForm>
-          <Form onSubmit={cadChamado}>
-            <Label>Título </Label>
-            <Input type="text" name="titulo" placeholder=" " onChange={valueInput} /><br /><br />
+    <Container>
+      <ConteudoForm>
+        <ConteudoTitulo>
+          <Titulo>Abrir chamado</Titulo>
+          <BotaoAcao>
+            <Link to="/">
+              <ButtonInfo>
+                Lista de chamados
+              </ButtonInfo>
+            </Link>
+          </BotaoAcao>
+        </ConteudoTitulo>
 
-            <Label>Descrição </Label>
-            <Input type="text" name="descricao" placeholder=" " onChange={valueInput} /><br /><br />
+        {status.type === 'erro' ? <AlertDanger>{status.mensagem}</AlertDanger> : ""}
+        {status.type === 'success' ? <AlertSuccess>{status.mensagem}</AlertSuccess> : ""}
+        <Form onSubmit={cadChamado}>
+          <Label>Título </Label>
+          <Input type="text" name="titulo" placeholder=" " onChange={valueInput} /><br /><br />
 
-            <Label>Status </Label>
-            <Input type="text" name="situacao" placeholder=" Aberto / Fechado " onChange={valueInput} /><br /><br />
+          <Label>Descrição </Label>
+          <Input type="text" name="descricao" placeholder=" " onChange={valueInput} /><br /><br />
 
-            <Label>Data de Abertura </Label>
-            <Input type="text" placeholder=" 28/05/2022 12:00 " onChange={valueInput} /><br /><br />
+          <Label>Status </Label>
+          <Input type="text" name="situacao" placeholder=" Aberto / Fechado " onChange={valueInput} /><br /><br />
 
-            <Label>Solicitante </Label>
-            <Input type="text" name="solicitante" placeholder=" Fulano de Tal " onChange={valueInput} /><br /><br />
+          <Label>Data de Abertura </Label>
+          <Input type="text" placeholder=" 28/05/2022 12:00 " onChange={valueInput} /><br /><br />
 
-            <ButtonSuccess type='submit'>Salvar</ButtonSuccess>
-          </Form>
-        </ConteudoForm>
-      </Container>
-    </div>
+          <Label>Solicitante </Label>
+          <Input type="text" name="solicitante" placeholder=" Fulano de Tal " onChange={valueInput} /><br /><br />
+
+          <ButtonSuccess type='submit'>Salvar</ButtonSuccess>
+        </Form>
+      </ConteudoForm>
+    </Container>
   );
 }
