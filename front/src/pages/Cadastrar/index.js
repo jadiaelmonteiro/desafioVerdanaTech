@@ -24,8 +24,6 @@ export const Cadastrar = () => {
 
   const cadChamado = async e => {
     e.preventDefault();
-    console.log(chamado.titulo);
-
     await fetch("http://localhost/desafio-verdanatech/cadastrar.php", {
       method: 'POST',
       headers: {
@@ -35,17 +33,16 @@ export const Cadastrar = () => {
     })
       .then((response) => response.json())
       .then((responseJson) => {
-        console.log(responseJson)
         if (responseJson.erro) {
           setStatus({
             type: 'erro',
             mensagem: responseJson.mensagem
-          })
+          });
         } else {
           setStatus({
             type: 'success',
             mensagem: responseJson.mensagem
-          })
+          });
         }
       }).catch(() => {
         setStatus({

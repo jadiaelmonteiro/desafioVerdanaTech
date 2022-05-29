@@ -30,7 +30,6 @@ export const Editar = () => {
       body: JSON.stringify({ titulo, descricao, situacao, solicitante, id })
     }).then((response) => response.json())
       .then((responseJson) => {
-        console.log(responseJson);
         if (responseJson.erro) {
           setStatus({
             type: 'error',
@@ -55,7 +54,6 @@ export const Editar = () => {
       await fetch("http://localhost/desafio-verdanatech/visualizar.php?id=" + id)
         .then((response) => response.json())
         .then((responseJson) => {
-          console.log(responseJson);
           setTitulo(responseJson.chamado.titulo);
           setDescricao(responseJson.chamado.descricao);
           setSituacao(responseJson.chamado.situacao);
