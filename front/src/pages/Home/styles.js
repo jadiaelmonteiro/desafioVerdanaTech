@@ -57,10 +57,6 @@ export const ButtonEdit = styled.button`
     border-radius: 4px;
     cursor: pointer;
     font-size: 15px;
-    :hover{
-        background-color: #16082f;
-        color: #fff;
-    }
 `;
 
 export const ButtonCenter = styled.td`

@@ -4,6 +4,7 @@ import {
   AlertDanger, AlertSuccess, Cabeçalho, ButtonCenter
 } from './styles';
 import { Link } from 'react-router-dom';
+import { ReactComponent as PencilIcon } from '../../assets/pencil.svg';
 
 export const Home = () => {
 
@@ -88,9 +89,13 @@ export const Home = () => {
                 <td>{chamado.situacao}</td>
                 <ButtonCenter>
                   <Link to={"/editar/" + chamado.id}>
-                    <ButtonEdit>Editar</ButtonEdit>
+                    <ButtonEdit>
+                      <PencilIcon height={14} width={14} />
+                    </ButtonEdit>
                   </Link>{" "}
-                  <ButtonEdit onClick={() => apagarChamado(chamado.id)}>Apagar</ButtonEdit>
+                  <ButtonEdit onClick={() => apagarChamado(chamado.id)}>
+                    X
+                  </ButtonEdit>
                 </ButtonCenter>
               </tr>
             ))}

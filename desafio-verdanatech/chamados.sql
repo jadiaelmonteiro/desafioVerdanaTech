@@ -23,6 +23,10 @@ SET time_zone = "+00:00";
 
 -- --------------------------------------------------------
 
+DROP DATABASE IF EXISTS `verdanatech`;
+CREATE DATABASE IF NOT EXISTS `verdanatech`;
+USE `verdanatech`;
+
 --
 -- Estrutura da tabela `chamados`
 --
