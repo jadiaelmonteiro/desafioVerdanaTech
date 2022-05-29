@@ -1,10 +1,15 @@
-import React, { useEffect, useState, useSyncExternalStore } from 'react';
-import { Container, ConteudoTitulo, BotaoAcao, ButtonSuccess, ButtonEdit, Table, Titulo } from './styles';
+import React, { useEffect, useState, useSyncExternalStore, setStatus } from 'react';
+import { Container, ConteudoTitulo, BotaoAcao, ButtonSuccess, ButtonEdit, Table, Titulo, AlertDanger, AlertSuccess } from './styles';
 import { Link } from 'react-router-dom';
 
 export const Home = () => {
 
   const [data, setData] = useState([]);
+
+  const [status, setStatus] = useState({
+    type: '',
+    mensagem: ''
+  });
 
   const getChamados = async () => {
     fetch("http://localhost/desafio-verdanatech/index.php")
@@ -14,6 +19,29 @@ export const Home = () => {
       ));
   }
 
+  const apagarChamado = async (idChamado) => {
+    await fetch("http://localhost/desafio-verdanatech/delete.php?id=" + idChamado)
+      .then((response) => response.json())
+      .then((responseJson) => {
+        if (responseJson.erro) {
+          setStatus({
+            type: 'erro',
+            mensagem: responseJson.mensagem
+          });
+        } else {
+          setStatus({
+            type: 'success',
+            mensagem: responseJson.mensagem
+          });
+          getChamados();
+        }
+      }).catch(() => {
+        setStatus({
+          type: 'erro',
+          mensagem: "Erro: Chamado não apagado, tente mais tarde."
+        });
+      });
+  };
   useEffect(() => {
     getChamados();
   }, [])
@@ -28,6 +56,9 @@ export const Home = () => {
           </Link>
         </BotaoAcao>
       </ConteudoTitulo>
+      {status.type === 'erro' ? <AlertDanger>{status.mensagem}</AlertDanger> : ""}
+      {status.type === 'success' ? <AlertSuccess>{status.mensagem}</AlertSuccess> : ""}
+
       <Table>
         <thead>
           <tr>
@@ -45,10 +76,12 @@ export const Home = () => {
               <td>{chamado.descricao}</td>
               <td>{chamado.solicitante}</td>
               <td>{chamado.situacao}</td>
-              <Link to={"/editar/" + chamado.id}>
-                <ButtonEdit>Editar</ButtonEdit>
-              </Link>
-              <td>Apagar</td>
+              <td>
+                <Link to={"/editar/" + chamado.id}>
+                  <ButtonEdit>Editar</ButtonEdit>
+                </Link>{" "}
+                <ButtonEdit onClick={() => apagarChamado(chamado.id)}>Apagar</ButtonEdit>
+              </td>
             </tr>
           ))}
         </tbody>
