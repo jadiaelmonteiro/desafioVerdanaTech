@@ -3,7 +3,8 @@ import styled from 'styled-components';
 export const Container = styled.section`
     max-width: 960px;
     margin: 20px auto;
-    box-shadow: 0 0 1em #6c757d;
+    box-shadow: 0 0 1em #DCDCDC;
+    padding: 0px 20px 20px;
 `;
 
 export const ConteudoTitulo = styled.section`
@@ -16,22 +17,18 @@ export const BotaoAcao = styled.section`
 `;
 
 export const ButtonInfo = styled.button`
-    background-color: #fff;
-    color: #0dcaf0;
-    padding: 6px 9px;
-    border: 1px solid #0dcaf0;
+    background-color: #16082f;
+    color: #FFFFFF;
+    padding: 8px 12px;
+    border: 1px solid #16082f;
     border-radius: 4px;
     cursor: pointer;
-    font-size: 18px;
-    :hover{
-        background-color: #31d2f2;
-        color: #fff;
-    }
+    font-size: 14px;
 `;
 
 export const Titulo = styled.h1`
-    color: #3e3e3e;
-    font-size: 23px;
+    color: #FFFFFF;
+    font-size: 17px;
 `;
 
 export const AlertSuccess = styled.p`
@@ -79,18 +76,32 @@ export const Input = styled.input`
     resize: vertical;
 `;
 
+export const TextArea = styled.textarea`
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: vertical;
+`;
+
 export const ButtonSuccess = styled.button`
-    background-color: #fff;
-    color: #198754;
+    background-color: #16082f;
+    color: #FFFFFF;
     padding: 8px 12px;
-    border: 1px solid #198754;
+    border: 1px solid #16082f;
     border-radius: 4px;
     cursor: pointer;
-    font-size: 18px;
-    :hover{
-        background-color: #157347;
-        color: #fff;
-    }
+    font-size: 14px;
+`;
+
+export const Cabeçalho = styled.section`
+    background-color: #16082f;
+    font-family: Arial;
+    justify-content: space-around;
+    display: flex;
 `;
 
 

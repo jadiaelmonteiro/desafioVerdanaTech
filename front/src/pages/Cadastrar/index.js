@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Container, Titulo, AlertSuccess, AlertDanger, ConteudoForm, Form, Label, Input, 
-  ButtonSuccess, ConteudoTitulo, BotaoAcao, ButtonInfo, Cabeçalho, TextArea } from './styles';
+import {
+  Container, Titulo, AlertSuccess, AlertDanger, ConteudoForm, Form, Label, Input,
+  ButtonSuccess, ConteudoTitulo, BotaoAcao, ButtonInfo, Cabeçalho, TextArea
+} from './styles';
 
 
 export const Cadastrar = () => {

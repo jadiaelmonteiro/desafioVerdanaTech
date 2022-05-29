@@ -3,7 +3,8 @@ import styled from 'styled-components';
 export const Container = styled.section`
     max-width: 960px;
     margin: 20px auto;
-    box-shadow: 0 0 1em #6c757d;
+    box-shadow: 0 0 1em #DCDCDC;
+    padding: 0px 20px 20px;
 `;
 
 export const ConteudoTitulo = styled.section`
@@ -102,5 +103,3 @@ export const Cabeçalho = styled.section`
     justify-content: space-around;
     display: flex;
 `;
-
-

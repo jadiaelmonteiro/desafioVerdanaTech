@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import {
   Container, Titulo, AlertSuccess, AlertDanger, ConteudoForm, Form,
-  Label, Input, ButtonSuccess, ConteudoTitulo, BotaoAcao, ButtonInfo
+  Label, Input, ButtonSuccess, ConteudoTitulo, BotaoAcao, ButtonInfo, Cabeçalho, TextArea
 } from './styles';
 
 export const Editar = () => {
@@ -66,38 +66,47 @@ export const Editar = () => {
   }, [id]);
 
   return (
-    <Container>
-      <ConteudoForm>
-        <ConteudoTitulo>
-          <Titulo>Editar</Titulo>
-          <BotaoAcao>
-            <Link to="/">
-              <ButtonInfo>Listar de chamados</ButtonInfo>
-            </Link>
-          </BotaoAcao>
-        </ConteudoTitulo>
+    <div>
+      <Cabeçalho>
+        <Titulo>VD</Titulo>
+        <Titulo>Editar chamado</Titulo>
+        <div></div>
+      </Cabeçalho>
+      <div>{<br />}</div>
+      <div>{<br />}</div>
+      <Container>
+        <ConteudoForm>
+          <ConteudoTitulo>
+            <Titulo></Titulo>
+            <BotaoAcao>
+              <Link to="/">
+                <ButtonInfo>Listar de chamados</ButtonInfo>
+              </Link>
+            </BotaoAcao>
+          </ConteudoTitulo>
 
-        {status.type === 'erro' ? <AlertDanger>{status.mensagem}</AlertDanger> : ""}
-        {status.type === 'success' ? <AlertSuccess>{status.mensagem}</AlertSuccess> : ""}
+          {status.type === 'erro' ? <AlertDanger>{status.mensagem}</AlertDanger> : ""}
+          {status.type === 'success' ? <AlertSuccess>{status.mensagem}</AlertSuccess> : ""}
 
-        <Form onSubmit={editChamdo}>
-          <Label>Título </Label>
-          <Input type="text" name="titulo" placeholder=" " value={titulo} onChange={e => setTitulo(e.target.value)} />
+          <Form onSubmit={editChamdo}>
+            <Label>Título </Label>
+            <Input type="text" name="titulo" placeholder=" " value={titulo} onChange={e => setTitulo(e.target.value)} />
 
-          <Label>Descrição </Label>
-          <Input type="text" name="descricao" placeholder=" " value={descricao} onChange={e => setDescricao(e.target.value)} />
+            <Label>Descrição </Label>
+            <TextArea cols="70" rows="10" type="text" name="descricao" value={descricao} onChange={e => setDescricao(e.target.value)} ></TextArea>
 
-          <Label>Status </Label>
-          <Input type="text" name="situacao" placeholder=" Aberto / Fechado " value={situacao} onChange={e => setSituacao(e.target.value)} />
+            <Label>Status </Label>
+            <Input type="text" name="situacao" placeholder=" Aberto / Fechado " value={situacao} onChange={e => setSituacao(e.target.value)} />
 
-          <Label>Solicitante </Label>
-          <Input type="text" name="solicitante" placeholder=" Fulano de Tal " value={solicitante} onChange={e => setSolicitante(e.target.value)} />
+            <Label>Solicitante </Label>
+            <Input type="text" name="solicitante" placeholder=" Fulano de Tal " value={solicitante} onChange={e => setSolicitante(e.target.value)} />
 
-          <ButtonSuccess type='submit'>Salvar</ButtonSuccess>
-        </Form>
+            <ButtonSuccess type='submit'>Salvar</ButtonSuccess>
+          </Form>
 
 
-      </ConteudoForm>
-    </Container>
+        </ConteudoForm>
+      </Container>
+    </div>
   )
 }
