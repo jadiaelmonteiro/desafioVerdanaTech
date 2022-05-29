@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Container, Titulo, AlertSuccess, AlertDanger, ConteudoForm, Form, Label, Input, ButtonSuccess, ConteudoTitulo, BotaoAcao, ButtonInfo } from './styles';
+import { Container, Titulo, AlertSuccess, AlertDanger, ConteudoForm, Form, Label, Input, 
+  ButtonSuccess, ConteudoTitulo, BotaoAcao, ButtonInfo, Cabeçalho, TextArea } from './styles';
 
 
 export const Cadastrar = () => {
@@ -53,41 +54,50 @@ export const Cadastrar = () => {
   }
 
   return (
-    <Container>
-      <ConteudoForm>
-        <ConteudoTitulo>
-          <Titulo>Abrir chamado</Titulo>
-          <BotaoAcao>
-            <Link to="/">
-              <ButtonInfo>
-                Lista de chamados
-              </ButtonInfo>
-            </Link>
-          </BotaoAcao>
-        </ConteudoTitulo>
+    <div>
+      <Cabeçalho>
+        <Titulo>VD</Titulo>
+        <Titulo>Abrir chamado</Titulo>
+        <div></div>
+      </Cabeçalho>
+      <div>{<br />}</div>
+      <div>{<br />}</div>
+      <Container>
+        <ConteudoForm>
+          <ConteudoTitulo>
+            <Titulo>Abrir chamado</Titulo>
+            <BotaoAcao>
+              <Link to="/">
+                <ButtonInfo>
+                  Lista de chamados
+                </ButtonInfo>
+              </Link>
+            </BotaoAcao>
+          </ConteudoTitulo>
 
-        {status.type === 'erro' ? <AlertDanger>{status.mensagem}</AlertDanger> : ""}
-        {status.type === 'success' ? <AlertSuccess>{status.mensagem}</AlertSuccess> : ""}
-        
-        <Form onSubmit={cadChamado}>
-          <Label>Título </Label>
-          <Input type="text" name="titulo" placeholder=" " onChange={valueInput}/>
+          {status.type === 'erro' ? <AlertDanger>{status.mensagem}</AlertDanger> : ""}
+          {status.type === 'success' ? <AlertSuccess>{status.mensagem}</AlertSuccess> : ""}
 
-          <Label>Descrição </Label>
-          <Input type="text" name="descricao" placeholder=" " onChange={valueInput}/>
+          <Form onSubmit={cadChamado}>
+            <Label>Título </Label>
+            <Input type="text" name="titulo" placeholder=" " onChange={valueInput} />
 
-          <Label>Status </Label>
-          <Input type="text" name="situacao" placeholder=" Aberto / Fechado " onChange={valueInput}/>
+            <Label>Descrição </Label>
+            <TextArea cols="70" rows="10" type="text" name="descricao" onChange={valueInput} ></TextArea>
 
-          <Label>Data de Abertura </Label>
-          <Input type="text" placeholder=" 28/05/2022 12:00 " onChange={valueInput}/>
+            <Label>Status </Label>
+            <Input type="text" name="situacao" placeholder=" Aberto / Fechado " onChange={valueInput} />
 
-          <Label>Solicitante </Label>
-          <Input type="text" name="solicitante" placeholder=" Fulano de Tal " onChange={valueInput}/>
+            <Label>Data de Abertura </Label>
+            <Input type="text" placeholder=" 28/05/2022 12:00 " onChange={valueInput} />
 
-          <ButtonSuccess type='submit'>Salvar</ButtonSuccess>
-        </Form>
-      </ConteudoForm>
-    </Container>
+            <Label>Solicitante </Label>
+            <Input type="text" name="solicitante" placeholder=" Fulano de Tal " onChange={valueInput} />
+
+            <ButtonSuccess type='submit'>Salvar</ButtonSuccess>
+          </Form>
+        </ConteudoForm>
+      </Container>
+    </div>
   );
 }
