@@ -1,5 +1,8 @@
-import React, { useEffect, useState, useSyncExternalStore, setStatus } from 'react';
-import { Container, ConteudoTitulo, BotaoAcao, ButtonSuccess, ButtonEdit, Table, Titulo, AlertDanger, AlertSuccess } from './styles';
+import React, { useEffect, useState } from 'react';
+import {
+  Container, ConteudoTitulo, BotaoAcao, ButtonSuccess, ButtonEdit, Table, Titulo,
+  AlertDanger, AlertSuccess, Cabeçalho, ButtonCenter
+} from './styles';
 import { Link } from 'react-router-dom';
 
 export const Home = () => {
@@ -47,45 +50,53 @@ export const Home = () => {
   }, [])
 
   return (
-    <Container>
-      <ConteudoTitulo>
+    <div>
+      <Cabeçalho>
+        <Titulo>VD</Titulo>
         <Titulo>Lista de chamados</Titulo>
-        <BotaoAcao>
-          <Link to="/cadastrar">
-            <ButtonSuccess>Abrir chamado</ButtonSuccess>
-          </Link>
-        </BotaoAcao>
-      </ConteudoTitulo>
-      {status.type === 'erro' ? <AlertDanger>{status.mensagem}</AlertDanger> : ""}
-      {status.type === 'success' ? <AlertSuccess>{status.mensagem}</AlertSuccess> : ""}
-
-      <Table>
-        <thead>
-          <tr>
-            <th>Título</th>
-            <th>Descrição</th>
-            <th>Solicitante</th>
-            <th>Status</th>
-            <th>Ações</th>
-          </tr>
-        </thead>
-        <tbody>
-          {Object.values(data).map(chamado => (
-            <tr key={chamado.id}>
-              <td>{chamado.titulo}</td>
-              <td>{chamado.descricao}</td>
-              <td>{chamado.solicitante}</td>
-              <td>{chamado.situacao}</td>
-              <td>
-                <Link to={"/editar/" + chamado.id}>
-                  <ButtonEdit>Editar</ButtonEdit>
-                </Link>{" "}
-                <ButtonEdit onClick={() => apagarChamado(chamado.id)}>Apagar</ButtonEdit>
-              </td>
+        <div></div>
+      </Cabeçalho>
+      <div>{<br />}</div>
+      <div>{<br />}</div>
+      <Container>
+        <ConteudoTitulo>
+          <Titulo></Titulo>
+          <BotaoAcao>
+            <Link to="/cadastrar">
+              <ButtonSuccess>Abrir chamado</ButtonSuccess>
+            </Link>
+          </BotaoAcao>
+        </ConteudoTitulo>
+        {status.type === 'erro' ? <AlertDanger>{status.mensagem}</AlertDanger> : ""}
+        {status.type === 'success' ? <AlertSuccess>{status.mensagem}</AlertSuccess> : ""}
+        <Table>
+          <thead>
+            <tr>
+              <th>Título</th>
+              <th>Descrição</th>
+              <th>Solicitante</th>
+              <th>Status</th>
+              <th>Ações</th>
             </tr>
-          ))}
-        </tbody>
-      </Table>
-    </Container>
+          </thead>
+          <tbody>
+            {Object.values(data).map(chamado => (
+              <tr key={chamado.id}>
+                <td>{chamado.titulo}</td>
+                <td>{chamado.descricao}</td>
+                <td>{chamado.solicitante}</td>
+                <td>{chamado.situacao}</td>
+                <ButtonCenter>
+                  <Link to={"/editar/" + chamado.id}>
+                    <ButtonEdit>Editar</ButtonEdit>
+                  </Link>{" "}
+                  <ButtonEdit onClick={() => apagarChamado(chamado.id)}>Apagar</ButtonEdit>
+                </ButtonCenter>
+              </tr>
+            ))}
+          </tbody>
+        </Table>
+      </Container>
+    </div>
   );
 }
