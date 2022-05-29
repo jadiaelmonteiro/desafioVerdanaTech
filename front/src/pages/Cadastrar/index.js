@@ -68,21 +68,22 @@ export const Cadastrar = () => {
 
         {status.type === 'erro' ? <AlertDanger>{status.mensagem}</AlertDanger> : ""}
         {status.type === 'success' ? <AlertSuccess>{status.mensagem}</AlertSuccess> : ""}
+        
         <Form onSubmit={cadChamado}>
           <Label>Título </Label>
-          <Input type="text" name="titulo" placeholder=" " onChange={valueInput} /><br /><br />
+          <Input type="text" name="titulo" placeholder=" " onChange={valueInput}/>
 
           <Label>Descrição </Label>
-          <Input type="text" name="descricao" placeholder=" " onChange={valueInput} /><br /><br />
+          <Input type="text" name="descricao" placeholder=" " onChange={valueInput}/>
 
           <Label>Status </Label>
-          <Input type="text" name="situacao" placeholder=" Aberto / Fechado " onChange={valueInput} /><br /><br />
+          <Input type="text" name="situacao" placeholder=" Aberto / Fechado " onChange={valueInput}/>
 
           <Label>Data de Abertura </Label>
-          <Input type="text" placeholder=" 28/05/2022 12:00 " onChange={valueInput} /><br /><br />
+          <Input type="text" placeholder=" 28/05/2022 12:00 " onChange={valueInput}/>
 
           <Label>Solicitante </Label>
-          <Input type="text" name="solicitante" placeholder=" Fulano de Tal " onChange={valueInput} /><br /><br />
+          <Input type="text" name="solicitante" placeholder=" Fulano de Tal " onChange={valueInput}/>
 
           <ButtonSuccess type='submit'>Salvar</ButtonSuccess>
         </Form>

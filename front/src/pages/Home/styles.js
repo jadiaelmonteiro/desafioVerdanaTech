@@ -48,3 +48,17 @@ export const ButtonSuccess = styled.button`
         color: #fff;
     }
 `;
+
+export const ButtonEdit = styled.button`
+    background-color: #fff;
+    color: #ffc107;
+    padding: 8px 12px;
+    border: 1px solid #ffc107;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    :hover{
+        background-color: #ffc107;
+        color: #fff;
+    }
+`;

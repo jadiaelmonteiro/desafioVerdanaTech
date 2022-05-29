@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useSyncExternalStore } from 'react';
-import { Container, ConteudoTitulo, BotaoAcao, ButtonSuccess, Table, Titulo } from './styles';
+import { Container, ConteudoTitulo, BotaoAcao, ButtonSuccess, ButtonEdit, Table, Titulo } from './styles';
 import { Link } from 'react-router-dom';
 
 export const Home = () => {
@@ -24,7 +24,7 @@ export const Home = () => {
         <Titulo>Lista de chamados</Titulo>
         <BotaoAcao>
           <Link to="/cadastrar">
-          <ButtonSuccess>Abrir chamado</ButtonSuccess>
+            <ButtonSuccess>Abrir chamado</ButtonSuccess>
           </Link>
         </BotaoAcao>
       </ConteudoTitulo>
@@ -45,7 +45,10 @@ export const Home = () => {
               <td>{chamado.descricao}</td>
               <td>{chamado.solicitante}</td>
               <td>{chamado.situacao}</td>
-              <td>Editar Apagar</td>
+              <Link to={"/editar/" + chamado.id}>
+                <ButtonEdit>Editar</ButtonEdit>
+              </Link>
+              <td>Apagar</td>
             </tr>
           ))}
         </tbody>
