@@ -9,7 +9,7 @@ Este programa se trata de um desafio de código
 + Abrir o Wampserver
 + Dentro do wampserver abrir o PhpMyAdmin 
 + Fazendo login: usuário: root, senha: deixar em branco
-+ Menu importar localizar o arquivo: chamados.sql, dentro da pasta desafio-verdanatech.
++ Menu importar, localizar o arquivo: chamados.sql, dentro da pasta desafio-verdanatech.
 + Colar a pasta desafio-verdanatech dentro da pasta www na raiz de instalação do wampserver, localizada geralmente em C:\wamp64\www, vai depender de onde foi instalado o wampserver.
 
 # Como rodar o Front-end
